@@ -1,0 +1,9 @@
+
+
+#export HOMEBREW_GITHUB_API_TOKEN="b877c2a724c39e398df1790953a438c2a44c0e77"
+export PGPASSFILE="$HOME/.pgpass"
+
+
+bindkey '^ ' autosuggest-accept
+
+

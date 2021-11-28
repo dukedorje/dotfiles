@@ -1,0 +1,16 @@
+
+upload-plex(){
+  file=$1
+  [ -z "$file" ] && echo Make sure you specify a file or directory && return 1
+  dest=${2:-Movies}
+  echo Uploading to /mnt/Files/Plex/$dest 
+  rsync -av --progress --exclude=.DS_Store $file duke@lenovo.local:/Plex/${dest}/
+}
+
+upload-plex-show(){
+  file=$1
+  [ -z "$file" ] && echo Make sure you specify a file or directory && return 1
+  dest=${2:-TV}
+  echo Uploading to /mnt/Files/Plex/$dest 
+  rsync -av --progress --exclude=.DS_Store $file duke@lenovo.local:/mnt/Files/Plex/${dest}/
+}
