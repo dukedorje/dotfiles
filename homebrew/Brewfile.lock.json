@@ -5,13 +5,13 @@
         "revision": "ca598bfea38d2a0e0316662807d58fca18169e22"
       },
       "homebrew/cask": {
-        "revision": "bec9ce12ba940c032036cf53768975c0d59892e1"
+        "revision": "ee822812eebe849de2c418b8076cc923f60c5350"
       },
       "homebrew/cask-fonts": {
-        "revision": "7c43d26e8f02dbc579c78071adddfe71f1e77c9c"
+        "revision": "4e7f86432a297ce7e476082b3339858529b8af4a"
       },
       "homebrew/core": {
-        "revision": "692ca1135be070791d3ca34d7cac688f619a045c"
+        "revision": "0fa35ab10f3e76da1dbe5b593e0b4e83b1976f5d"
       },
       "homebrew/services": {
         "revision": "0c4caad0ccdab8014e9436624379828377d474d8"
@@ -1179,7 +1179,7 @@
         }
       },
       "balenaetcher": {
-        "version": "1.7.0",
+        "version": "1.7.1",
         "options": {
           "full_name": "balenaetcher"
         }
@@ -1393,15 +1393,21 @@
         "options": {
           "full_name": "beyond-compare"
         }
+      },
+      "slack": {
+        "version": "4.22.0",
+        "options": {
+          "full_name": "slack"
+        }
       }
     }
   },
   "system": {
     "macos": {
       "monterey": {
-        "HOMEBREW_VERSION": "3.3.5",
+        "HOMEBREW_VERSION": "3.3.6",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "692ca1135be070791d3ca34d7cac688f619a045c",
+        "Homebrew/homebrew-core": "0fa35ab10f3e76da1dbe5b593e0b4e83b1976f5d",
         "CLT": "13.1.0.0.1.1633545042",
         "Xcode": "13.1",
         "macOS": "12.0.1"
