@@ -5,13 +5,13 @@
         "revision": "ca598bfea38d2a0e0316662807d58fca18169e22"
       },
       "homebrew/cask": {
-        "revision": "7c3113514d8b4ad0dbda2338639cc6e1ecced0b1"
+        "revision": "bec9ce12ba940c032036cf53768975c0d59892e1"
       },
       "homebrew/cask-fonts": {
         "revision": "7c43d26e8f02dbc579c78071adddfe71f1e77c9c"
       },
       "homebrew/core": {
-        "revision": "ee4e709b08aa7df4b7b439282ac54adf3572e23c"
+        "revision": "692ca1135be070791d3ca34d7cac688f619a045c"
       },
       "homebrew/services": {
         "revision": "0c4caad0ccdab8014e9436624379828377d474d8"
@@ -1387,6 +1387,12 @@
         "options": {
           "full_name": "zoom"
         }
+      },
+      "beyond-compare": {
+        "version": "4.4.0.25886",
+        "options": {
+          "full_name": "beyond-compare"
+        }
       }
     }
   },
@@ -1395,7 +1401,7 @@
       "monterey": {
         "HOMEBREW_VERSION": "3.3.5",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "ee4e709b08aa7df4b7b439282ac54adf3572e23c",
+        "Homebrew/homebrew-core": "692ca1135be070791d3ca34d7cac688f619a045c",
         "CLT": "13.1.0.0.1.1633545042",
         "Xcode": "13.1",
         "macOS": "12.0.1"
