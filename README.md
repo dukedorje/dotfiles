@@ -1,4 +1,5 @@
 # dukejones does dotfiles
+
     Copied from the eminent holman dotfiles project
 
 This project is topic-centric. I realized I could split a lot of things
@@ -6,11 +7,12 @@ up into the main areas I used (Ruby, git, system libraries, and so on), so I
 structured the project accordingly.
 
 ## major changes from holman
-* I added antigen as a minimal and amazing package installer for ZSH, with my favorite plugins.
 
-* I added a Brewfile and shell script to run `brew bundle install`. It installs all the best homebrew stuff for development.
+- I added antigen as a minimal and amazing package installer for ZSH, with my favorite plugins.
 
-* Also added asdf installation to manage all the versions of your language interpreter binaries such as nodejs, python, ruby, etc.
+- I added a Brewfile and shell script to run `brew bundle install`. It installs all the best homebrew packages for development.
+
+- Also added asdf installation to manage all the versions of your language interpreter binaries such as nodejs, python, ruby, etc.
 
 ## topical
 
@@ -22,7 +24,7 @@ symlinked without extension into `$HOME` when you run `script/bootstrap`.
 
 ## what to do
 
-[Fork it](https://github.com/holman/dotfiles/fork), remove what you don't
+[Fork it](https://github.com/dukejones/dotfiles/fork), remove what you don't
 use, and build on what you do use.
 
 ## components
@@ -43,16 +45,22 @@ There's a few special files in the hierarchy.
   but still keep those autoloaded files in your home directory. These get
   symlinked in when you run `script/bootstrap`.
 
-For antigen, I had to include all the plugins in antigen.zsh in the zsh/ folder, because it needs an init, the plugins, then a command to tell it to finish. This didn't lend itself to the alphabetical order that ZSH loads the different files.
+For antigen, I had to include all the plugins in one file, `antigen-packages`.zsh, in the zsh/ folder, because it needs an init, the plugins, then a command to tell it to finish. Otherwise the zshrc loads all .zsh files in alphabetical order.
 
 ## install
 
 Run this:
 
 ```sh
-git clone https://github.com/holman/dotfiles.git ~/.dotfiles
+git clone https://github.com/dukejones/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
+# on mac
+homebrew/install.sh
+homebrew/install-brewfile.sh
+asdf/install.sh
+# for the very adventurous
+macos/set-defaults.sh
 ```
 
 This will symlink the appropriate files in `.dotfiles` to your home directory.

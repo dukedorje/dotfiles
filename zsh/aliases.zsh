@@ -27,10 +27,6 @@ alias dkill="docker ps | sed 1d | fzf -m --tac | cut -d ' ' -f 1 | xargs docker 
 alias dkillall="docker ps -a -q | xargs docker kill -f"
 alias drmiall="docker images -q | xargs docker rmi"
 
-rx () {
-  remixd -s $1 --remix-ide https://remix.ethereum.org
-}
-
 superman () {
   man -t $1 | open -f -a Preview
 }
