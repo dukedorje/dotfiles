@@ -58,7 +58,6 @@ script/bootstrap
 # on mac
 homebrew/install.sh
 homebrew/install-brewfile.sh
-asdf/install.sh
 # for the very adventurous
 macos/set-defaults.sh
 ```

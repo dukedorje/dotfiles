@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Usage: sst <sshserver>
+# Description: uses iTerm's native tmux support. Make sure tmux is installed on the server.
+#
+sst () {
+    ssh -t $@  "tmux -CC attach || tmux -CC"
+}

@@ -1,6 +1,14 @@
-(( $+commands[brew] )) && FZF_DIR=$(brew --prefix fzf)
-[[ -d "$FZF_DIR" ]] && source "$FZF_DIR/shell/key-bindings.zsh"
-[[ -d "$FZF_DIR" ]] && source "$FZF_DIR/shell/completion.zsh"
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == *${FZF_PATH}/bin* ]]; then
+  export PATH="$PATH:${FZF_PATH}/bin"
+fi
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "${FZF_PATH}/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+# ------------
+source "${FZF_PATH}/shell/key-bindings.zsh"
+
