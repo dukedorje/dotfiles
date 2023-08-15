@@ -9,7 +9,7 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle fzf
 antigen bundle docker
-antigen bundle pipenv
+# antigen bundle pipenv
 antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions

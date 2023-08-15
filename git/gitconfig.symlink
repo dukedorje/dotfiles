@@ -89,3 +89,6 @@
 	smudge = git-lfs smudge -- %f
 [init]
 	defaultBranch = main
+[user]
+	name = Duke Jones
+	email = 104690+dukejones@users.noreply.github.com
