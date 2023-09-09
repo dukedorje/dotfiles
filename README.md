@@ -1,18 +1,14 @@
-# dukejones does dotfiles
+# A clear way of managing dotfiles
 
-    Copied from the eminent holman dotfiles project
+> Copied from the excellent holman dotfiles project.
 
-This project is topic-centric. I realized I could split a lot of things
-up into the main areas I used (Ruby, git, system libraries, and so on), so I
-structured the project accordingly.
+This project is topic-centric. Folders represent the main areas, e.g. Ruby, git, system libraries, and so on.
 
-## major changes from holman
+# Main Features
 
-- I added antigen as a minimal and amazing package installer for ZSH, with my favorite plugins.
-
-- I added a Brewfile and shell script to run `brew bundle install`. It installs all the best homebrew packages for development.
-
-- Also added asdf installation to manage all the versions of your language interpreter binaries such as nodejs, python, ruby, etc.
+- Auto-symlinks anything called `*.symlink` into your ~/ dir.
+- antigen == an extraordinary package manager for ZSH, with a curated set of plugins.
+- Brewfile and shell script to run `brew bundle install`. It installs all the best homebrew packages for development.
 
 ## topical
 

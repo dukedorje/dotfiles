@@ -8,13 +8,11 @@
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES
 
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/work
 export HOMEBREW_NO_ENV_HINTS=1
-export DEFAULT_USER=dukejones
+# export DEFAULT_USER=dukejones
 
-export VISUAL="code-insiders -w"
-export EDITOR="code-insiders -w"
+export EDITOR="cursor"
+export VISUAL="cursor -w"
 
 # Stash your environment variables in ~/.env. This means they'll stay out
 # of your main repository, but you'll have access to them in your scripts.
@@ -25,7 +23,6 @@ fi
 # all of our zsh files
 typeset -U config_files
 config_files=($DOTFILES/zsh/lib/*.zsh $DOTFILES/**/*.zsh ${/opt/homebrew/share/zsh/site-functions/*:""})
-# echo $config_files
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
@@ -50,6 +47,9 @@ do
 done
 
 unset config_files
+
+############### INDIVIDUAL PACKAGE SETUP ##################
+# (This could mostly be moved to individual files)
 
 # Better history
 # Credits to https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
@@ -91,6 +91,7 @@ eval "$(pyenv init -)"
 
 eval "$(github-copilot-cli alias -- "$0")"
 
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+eval "$(rbenv init - zsh)"
 
+# bun completions
+[ -s "/Users/dukejones/.bun/_bun" ] && source "/Users/dukejones/.bun/_bun"

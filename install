@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# Run all dotfiles installers.
+
+set -e
+
+cd "$(dirname $0)"/..
+
+echo "Running all installers."
+echo $(find . -name install.sh)
+echo "This script will run all installers. Do you want to continue? (Y/n)"
+read user_input
+
+if [[ "$user_input" != "yes" && "$user_input" != "y" && "$user_input" != "" ]]
+then
+  echo "Exiting script."
+  exit 1
+fi
+
+
+# find the installers and run them iteratively
+find . -name install.sh | while read installer ; do sh -c "${installer}" ; done

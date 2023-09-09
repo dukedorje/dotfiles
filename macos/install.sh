@@ -3,10 +3,25 @@ if test ! "$(uname)" = "Darwin"
   exit 0
 fi
 
-# The Brewfile handles Homebrew-based app and library installs, but there may
-# still be updates and installables in the Mac App Store. There's a nifty
-# command line interface to it that we can use to just install everything, so
-# yeah, let's do that.
+echo "MacOS install. Not running these automatically to avoid any surprises."
+echo ""
+echo "macos/softwareupdate.sh: Auto-runs all software updates waiting in MacOS."
+echo "macos/set-defaults.sh: Set a bunch of system defaults in MacOS. Probably read it and comment/uncomment what you want."
 
-echo "› sudo softwareupdate -i -a"
-sudo softwareupdate -i -a
+
+
+# export ZSH=$HOME/.dotfiles
+
+# # Set macOS defaults
+# $ZSH/macos/set-defaults.sh
+
+# # Install homebrew
+# $ZSH/homebrew/install.sh 2>&1
+
+# # Upgrade homebrew
+# echo "› brew update"
+# brew update
+
+# # Install software
+# echo "› $ZSH/script/install"
+# $ZSH/script/install

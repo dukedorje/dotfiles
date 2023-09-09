@@ -24,7 +24,6 @@ function di-fn {
 	docker inspect $1
 }
 
-
 alias d='docker $*'
 alias dex=dex-fn
 alias di=di-fn
