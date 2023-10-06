@@ -1,18 +1,17 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES
 
 export HOMEBREW_NO_ENV_HINTS=1
-# export DEFAULT_USER=dukejones
 
-export EDITOR="cursor"
-export VISUAL="cursor -w"
+export EDITOR="code-insiders -w"
+export VISUAL="code-insiders -w"
 
 # Stash your environment variables in ~/.env. This means they'll stay out
 # of your main repository, but you'll have access to them in your scripts.
@@ -35,10 +34,10 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
 done
+antigen apply # Apply Antigen configuration
 
 # initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
+autoload -Uz compinit && compinit
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
@@ -66,14 +65,11 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
-# NVM - is this handled by the antigen plugin?
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 # OPS config - ELF microkernel compilation
-export OPS_DIR="$HOME/.ops"
-export PATH="$HOME/.ops/bin:$PATH"
+if [ -d "$HOME/.ops" ]; then
+  export OPS_DIR="$HOME/.ops"
+  export PATH="$PATH:$HOME/.ops/bin"
+fi
 
 # Vim mode
 # bindkey -v
@@ -82,16 +78,19 @@ export KEYTIMEOUT=1
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/lib/p10k.zsh.
 [[ ! -f ~/.dotfiles/zsh/p10k.zsh ]] || source ~/.dotfiles/zsh/p10k.zsh
 
-
-export PNPM_HOME="/Users/dukejones/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH:${HOME}/.fluvio/bin:${HOME}/.foundry/bin:${HOME}/.local/bin"
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
-eval "$(github-copilot-cli alias -- "$0")"
 
-eval "$(rbenv init - zsh)"
+# Now check for pyenv command
+if (( $+commands[github-copilot-cli] )); then
+  eval "$(github-copilot-cli alias -- "$0")"
+fi
+
+
+if (( $+commands[rbenv] )); then
+  eval "$(rbenv init - zsh)"
+fi
 
 # bun completions
-[ -s "/Users/dukejones/.bun/_bun" ] && source "/Users/dukejones/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
