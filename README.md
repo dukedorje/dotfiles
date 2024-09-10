@@ -1,5 +1,14 @@
 # A clear way of managing dotfiles
 
+## TL;DR
+
+```bash
+git clone https://github.com/dukejones/dotfiles ~/.dotfiles
+cd ~/.dotfiles
+./bootstrap
+
+```
+
 > Copied from the excellent holman dotfiles project.
 
 This project is topic-centric. Folders represent the main areas, e.g. Ruby, git, system libraries, and so on.
@@ -10,7 +19,7 @@ This project is topic-centric. Folders represent the main areas, e.g. Ruby, git,
 - antigen == an extraordinary package manager for ZSH, with a curated set of plugins.
 - Brewfile and shell script to run `brew bundle install`. It installs all the best homebrew packages for development.
 
-## topical
+## Topical Organization
 
 Everything's built around topic areas. If you're adding a new area to your
 forked dotfiles — say, "Java" — you can simply add a `java` directory and put
@@ -18,7 +27,7 @@ files in there. Anything with an extension of `.zsh` will get automatically
 included into your shell. Anything with an extension of `.symlink` will get
 symlinked without extension into `$HOME` when you run `script/bootstrap`.
 
-## what to do
+## I want my own dotfiles: 
 
 [Fork it](https://github.com/dukejones/dotfiles/fork), remove what you don't
 use, and build on what you do use.
@@ -40,6 +49,9 @@ There's a few special files in the hierarchy.
   your `$HOME`. This is so you can keep all of those versioned in your dotfiles
   but still keep those autoloaded files in your home directory. These get
   symlinked in when you run `script/bootstrap`.
+
+# TODO: install.sh for lf, and .config/lf files
+
 
 For antigen, I had to include all the plugins in one file, `antigen-packages`.zsh, in the zsh/ folder, because it needs an init, the plugins, then a command to tell it to finish. Otherwise the zshrc loads all .zsh files in alphabetical order.
 
@@ -82,6 +94,6 @@ and I'd love to get it fixed for you!
 
 ## thanks
 
-Of course [holman](https://github.com/holman/dotfiles/issues) the original.
+[holman](https://github.com/holman/dotfiles/issues) the original.
 
 Also [bynen](https://github.com/mathiasbynens/dotfiles) is _very_ detail oriented but I got the macos `set-defaults.sh` magic from him.

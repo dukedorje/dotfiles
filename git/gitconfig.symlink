@@ -1,36 +1,36 @@
 # Local/private config goes in the include
 [include]
-        path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
 [hub]
-        protocol = https
+	protocol = https
 [alias]
-        co = checkout
-        promote = !$ZSH/bin/git-promote
-        wtf     = !$ZSH/bin/git-wtf
-        rank-contributors = !$ZSH/bin/git-rank-contributors
-        count   = !git shortlog -sn
+	co = checkout
+	promote = !$ZSH/bin/git-promote
+	wtf     = !$ZSH/bin/git-wtf
+	rank-contributors = !$ZSH/bin/git-rank-contributors
+	count   = !git shortlog -sn
 [color]
-        diff = auto
-        status = auto
-        branch = auto
-        ui = true
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
 [core]
-        excludesfile = ~/.gitignore
-	editor = code --wait
+	excludesfile = ~/.gitignore
+	editor = /usr/local/bin/cursor --wait
 [apply]
-        whitespace = nowarn
+	whitespace = nowarn
 [mergetool]
-        keepBackup = false
+	keepBackup = false
 [difftool]
-        prompt = false
+	prompt = false
 [help]
-        autocorrect = 1
+	autocorrect = 1
 [push]
-        # See `git help config` (search for push.default)
-        # for more information on different options of the below setting.
-        #
-        # Setting to git 2.0 default to suppress warning message
-        default = simple
+	# See `git help config` (search for push.default)
+	# for more information on different options of the below setting.
+	#
+	# Setting to git 2.0 default to suppress warning message
+	default = simple
 [credential]
 	helper = osxkeychain
 [alias]
@@ -66,7 +66,7 @@
 	# list aliases
 	aliases = "!git config -l | grep alias | cut -c 7-"
 
-        # for github remotes
+	# for github remotes
 	pr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 	pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
 	# for bitbucket/stash remotes
@@ -89,6 +89,3 @@
 	smudge = git-lfs smudge -- %f
 [init]
 	defaultBranch = main
-[user]
-	name = Duke Jones
-	email = 104690+dukejones@users.noreply.github.com

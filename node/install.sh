@@ -1,3 +1,5 @@
+# TODO: Install nvm
+
 if test ! $(which spoof)
 then
   if test $(which npm)

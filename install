@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Run all dotfiles installers.
-
+# Runs every script called `install.sh` in the repo.
 set -e
 
 cd "$(dirname $0)"/..

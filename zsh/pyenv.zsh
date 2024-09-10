@@ -8,6 +8,4 @@ fi
 # Now check for pyenv command
 if (( $+commands[pyenv] )); then
   eval "$(pyenv init -)"
-else
-  echo "pyenv is not installed or .pyenv directory doesn't exist. Skipping pyenv setup."
 fi

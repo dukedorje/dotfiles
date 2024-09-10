@@ -10,8 +10,8 @@ export ZSH=$DOTFILES
 
 export HOMEBREW_NO_ENV_HINTS=1
 
-export EDITOR="code-insiders -w"
-export VISUAL="code-insiders -w"
+export EDITOR="/usr/local/bin/cursor -w"
+export VISUAL="/usr/local/bin/cursor -w"
 
 # Stash your environment variables in ~/.env. This means they'll stay out
 # of your main repository, but you'll have access to them in your scripts.
@@ -34,6 +34,7 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
 done
+
 antigen apply # Apply Antigen configuration
 
 # initialize autocomplete here, otherwise functions won't be loaded
@@ -60,16 +61,16 @@ unset config_files
 #bindkey "^[[B" down-line-or-beginning-search # Down
 
 
-export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
+# export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
+# if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+#   source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+# fi
 
 # OPS config - ELF microkernel compilation
-if [ -d "$HOME/.ops" ]; then
-  export OPS_DIR="$HOME/.ops"
-  export PATH="$PATH:$HOME/.ops/bin"
-fi
+# if [ -d "$HOME/.ops" ]; then
+#   export OPS_DIR="$HOME/.ops"
+#   export PATH="$PATH:$HOME/.ops/bin"
+# fi
 
 # Vim mode
 # bindkey -v
@@ -82,15 +83,25 @@ export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH:${HOME}/.fluvio/bin:${HOME}/.foundry/bin:${HOME}/.local/bin"
 
 
-# Now check for pyenv command
-if (( $+commands[github-copilot-cli] )); then
-  eval "$(github-copilot-cli alias -- "$0")"
-fi
-
-
 if (( $+commands[rbenv] )); then
   eval "$(rbenv init - zsh)"
 fi
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    cd "$(command lf -print-last-dir "$@")"
+}
+bindkey -s '^o' 'lfcd\n' # Ctrl+o
+
+export PATH="/Users/dukejones/.local/share/solana/install/active_release/bin:$PATH"
+export PATH=$PATH:$HOME/.maestro/bin
+
+# Android development
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools
