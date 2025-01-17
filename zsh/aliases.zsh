@@ -29,3 +29,6 @@ alias p=pnpm
 alias px=pnpx
 alias br="bun --bun run"
 alias c="cargo"
+
+alias ytx="yt-dlp -x"
+alias z="zellij"

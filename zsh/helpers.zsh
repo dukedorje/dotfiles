@@ -25,11 +25,11 @@ wav-compress () {
 }
 
 clean-projects () {
-	fd -td -u '(target|node_modules)$' -x rm -rf {}
+	fd -td -u '(target|node_modules|.next|.venv)$' -x echo \; -x rm -rf {}
 }
 
 # To create the encrypted file: `gpg --symmetric --cipher-algo AES256 ~/.secret.env && rm ~/.secret.env`
-load_secret_env () {
+load-secret-env () {
 	gpg --decrypt ~/.secret.env.gpg > ~/.secret.env
 	source ~/.secret.env
 	rm ~/.secret.env

@@ -10,8 +10,9 @@ export ZSH=$DOTFILES
 
 export HOMEBREW_NO_ENV_HINTS=1
 
-export EDITOR="/usr/local/bin/cursor -w"
-export VISUAL="/usr/local/bin/cursor -w"
+export EDITOR_CMD="/usr/local/bin/cursor"
+export EDITOR="$EDITOR_CMD -w"
+export VISUAL="$EDITOR_CMD -w"
 
 # Stash your environment variables in ~/.env. This means they'll stay out
 # of your main repository, but you'll have access to them in your scripts.
@@ -98,10 +99,24 @@ lfcd () {
 }
 bindkey -s '^o' 'lfcd\n' # Ctrl+o
 
-export PATH="/Users/dukejones/.local/share/solana/install/active_release/bin:$PATH"
-export PATH=$PATH:$HOME/.maestro/bin
+if [ -d "$HOME/.local/share/solana/install/active_release/bin" ]; then
+  export PATH="$PATH:$HOME/.local/share/solana/install/active_release/bin"
+fi
+
+if [ -d "$HOME/.maestro" ]; then
+  export PATH=$PATH:$HOME/.maestro/bin
+fi
 
 # Android development
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+export JAVA_HOME=/opt/homebrew/opt/openjdk
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools
+
+if [ -d "$HOME/.config/broot/launcher/bash" ]; then
+  source $HOME/.config/broot/launcher/bash/br
+fi
+
+if (( $+commands[go] )) && [ -d "$(go env GOPATH)" ]; then
+  export PATH="$PATH:$(go env GOPATH)/bin"
+fi
