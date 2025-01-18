@@ -25,7 +25,7 @@ wav-compress () {
 }
 
 clean-projects () {
-	fd -td -u '(target|node_modules|.next|.venv)$' -x echo \; -x rm -rf {}
+	fd -td -u '(target|node_modules|.next|.yarn|.cargo|.venv)$' -x echo \; -x rm -rf {}
 }
 
 # To create the encrypted file: `gpg --symmetric --cipher-algo AES256 ~/.secret.env && rm ~/.secret.env`
