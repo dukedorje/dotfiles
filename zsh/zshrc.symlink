@@ -109,7 +109,8 @@ fi
 
 # Android development
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-export JAVA_HOME=/opt/homebrew/opt/openjdk
+# export JAVA_HOME=/opt/homebrew/opt/openjdk
+export JAVA_HOME=$(/usr/libexec/java_home)
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools
 

@@ -24,8 +24,17 @@ wav-compress () {
 	ffmpeg -vn -i "$fname" -c:a aac -q:a 2 "${fname%.*}.m4a"
 }
 
+opus2m4a() {
+    [[ -z "$1" ]] && { echo "Usage: opus2m4a input.opus"; return 1 }
+    [[ -f "$1" ]] || { echo "File not found: $1"; return 1 }
+    local input="$1"
+    local output="${input:r}.m4a"
+    ffmpeg -i "$input" -c:a aac_at -q:a 2 "$output"
+}
+
+
 clean-projects () {
-	fd -td -u '(target|node_modules|.next|.yarn|.cargo|.venv)$' -x echo \; -x rm -rf {}
+	fd -td -u '(target|node_modules|.next|.yarn|.cargo|.venv|dist|web-build|ios|android)$' -x echo \; -x rm -rf {}
 }
 
 # To create the encrypted file: `gpg --symmetric --cipher-algo AES256 ~/.secret.env && rm ~/.secret.env`

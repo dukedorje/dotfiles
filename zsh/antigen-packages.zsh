@@ -14,6 +14,7 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle unixorn/fzf-zsh-plugin@main
 antigen bundle urbainvaes/fzf-marks
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle rbenv
 
 # antigen bundle synec/nvm-auto
 export NVM_LAZY_LOAD=true
@@ -22,7 +23,8 @@ export NVM_AUTO_USE=true
 antigen bundle lukechilds/zsh-nvm
 
 #! Themes !#
-antigen theme romkatv/powerlevel10k
-# antigen theme spaceship-prompt/spaceship-prompt
+# antigen theme romkatv/powerlevel10k
+antigen theme spaceship-prompt/spaceship-prompt
 # antigen theme agnoster/agnoster-zsh-theme
 
+antigen apply
