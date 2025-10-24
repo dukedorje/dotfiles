@@ -10,9 +10,10 @@ export ZSH=$DOTFILES
 
 export HOMEBREW_NO_ENV_HINTS=1
 
-export EDITOR_CMD="/usr/local/bin/cursor"
+export EDITOR_CMD="/usr/local/bin/zed"
 export EDITOR="$EDITOR_CMD -w"
 export VISUAL="$EDITOR_CMD -w"
+export NVM_NO_USE=false
 
 # Stash your environment variables in ~/.env. This means they'll stay out
 # of your main repository, but you'll have access to them in your scripts.
@@ -121,3 +122,34 @@ fi
 if (( $+commands[go] )) && [ -d "$(go env GOPATH)" ]; then
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
+export PATH=$HOME/.avm/bin:$PATH
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator
+
+
+export PATH="/Users/dukejones/.codeium/windsurf/bin:$PATH"
+
+alias chromium="$HOME/Library/Caches/ms-playwright/chromium-1181/chrome-mac/Chromium.app"
+export PATH="$HOME/bin:$PATH"
+
+# Start.Fun Deployment Artifact Sync
+export DEPLOYMENT_SYNC_BUCKET=startfun-deployment-artifacts
+export DEPLOYMENT_SYNC_REGION=us-east-1
+export AWS_PROFILE=startfun
+
+# Start.Fun Deployment Artifact Sync - Minio  
+export DEPLOYMENT_SYNC_BUCKET=startfun-deployment-artifacts
+export DEPLOYMENT_SYNC_ENDPOINT=http://your-minio-endpoint:9000
+export DEPLOYMENT_SYNC_REGION=us-east-1
+alias python="uv run python"
+
+alias bmad="node $HOME/work/Projects/AI/BMAD-METHOD/tools/cli/bmad-cli.js"
+
+

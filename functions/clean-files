@@ -1,0 +1,22 @@
+# Clean Xcode DerivedData
+clean-files() {
+    # Clear Derived Data
+    rm -rf ~/Library/Developer/Xcode/DerivedData
+
+    # Clear device support files
+    rm -rf ~/Library/Developer/Xcode/iOS\ DeviceSupport
+
+    # Clear simulators (if needed)
+    xcrun simctl delete unavailable
+
+    # Clear module cache
+    rm -rf ~/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+    
+    # Clear Android SDK
+    rm -rf ~/Library/Android/sdk
+    
+    # Clear pnpm cached libraries
+    rm -rf ~/Library/pnpm
+    
+    rm -rf ~/.cache/*
+}

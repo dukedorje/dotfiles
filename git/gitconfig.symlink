@@ -16,7 +16,6 @@
 	ui = true
 [core]
 	excludesfile = ~/.gitignore
-	editor = /usr/local/bin/cursor --wait
 [apply]
 	whitespace = nowarn
 [mergetool]
@@ -81,7 +80,7 @@
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [pull]
-	rebase = true
+	rebase = false
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true

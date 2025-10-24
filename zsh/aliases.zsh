@@ -9,6 +9,7 @@ alias cls='clear' # Good 'ol Clear Screen command
 alias nfs_mount="sudo mount -t nfs -o nfsvers=4,soft,intr,rw,rsize=8192,wsize=8192,timeo=60,retrans=2,resvport lenovo.local:/Media /private/nfs/"
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
 
+alias ll="ls -l"
 #alias rnd='open "rndebugger://set-debugger-loc?host=localhost&port=19001"'
 alias g=git
 alias be="bundle exec"
@@ -27,8 +28,12 @@ alias y=yarn
 alias hh="pnpm hardhat"
 alias p=pnpm
 alias px=pnpx
-alias br="bun --bun run"
+alias br="bun run"
+alias b="bun"
 alias c="cargo"
 
 alias ytx="yt-dlp -x"
+alias ytxa="yt-dlp --audio-format aac --no-playlist -x"
+
 alias z="zellij"
+alias applypath="echo 'An AI Agent should run this internally, not on the command shell.'"

@@ -43,3 +43,48 @@ load-secret-env () {
 	source ~/.secret.env
 	rm ~/.secret.env
 }
+
+yt-aac () {
+	[[ -z "$1" ]] && { echo "Usage: yt-aac <youtube_url>"; return 1 }
+	yt-dlp --audio-format aac -x "$1"
+}
+
+pack() {
+  local selected_script
+
+  selected_script=$(cat package.json | jq -r '
+    .scripts | to_entries[] |
+    "\(.key)\t\(.value)"
+  ' | fzf --ansi \
+    --reverse \
+    --height=50% \
+    --border=rounded \
+    --preview 'echo {2..} | sed "s/\t/ /g"' \
+    --preview-window=up:3:wrap \
+    --header="📦 Select which package.json script to run" \
+    --prompt="search> " \
+    --pointer="▶" \
+    --marker="✓" \
+    --color="header:italic:underline,fg+:cyan,bg+:black,pointer:red,marker:green,prompt:cyan,hl:yellow,hl+:yellow" \
+    --bind="ctrl-/:toggle-preview" \
+    --bind="alt-up:preview-up,alt-down:preview-down" \
+  | cut -f1)
+
+  if [[ -n "$selected_script" ]]; then
+    local cmd
+    if [[ -f bun.lockb ]]; then
+      echo "⚡ Running with bun: $selected_script"
+      cmd="bun run $selected_script"
+      bun run "$selected_script"
+    elif [[ -f pnpm-lock.yaml ]]; then
+      echo "🔧 Running with pnpm: $selected_script"
+      cmd="pnpm run $selected_script"
+      pnpm run "$selected_script"
+    else
+      echo "⚡ Running with bun: $selected_script"
+      cmd="bun run $selected_script"
+      bun run "$selected_script"
+    fi
+    print -s "$cmd"
+  fi
+}
