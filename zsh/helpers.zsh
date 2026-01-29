@@ -34,7 +34,7 @@ opus2m4a() {
 
 
 clean-projects () {
-	fd -td -u '(target|node_modules|.next|.yarn|.cargo|.venv|dist|web-build|ios|android)$' -x echo \; -x rm -rf {}
+	fd -td -u '(target|node_modules|.next|.yarn|.cargo|.venv|dist|build)$' -x echo \; -x rm -rf {}
 }
 
 # To create the encrypted file: `gpg --symmetric --cipher-algo AES256 ~/.secret.env && rm ~/.secret.env`
@@ -87,4 +87,8 @@ pack() {
     fi
     print -s "$cmd"
   fi
+}
+
+spin-serve() {
+	spin up --from ghcr.io/fermyon/spin-fileserver:v0.3.0 --files "${1:-.}" --listen 127.0.0.1:${2:-3000}
 }

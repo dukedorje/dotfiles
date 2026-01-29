@@ -17,14 +17,27 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle rbenv
 
 # antigen bundle synec/nvm-auto
-export NVM_LAZY_LOAD=true
+export NVM_LAZY_LOAD=false
 export NVM_COMPLETION=true
 export NVM_AUTO_USE=true
 antigen bundle lukechilds/zsh-nvm
 
 #! Themes !#
-# antigen theme romkatv/powerlevel10k
-antigen theme spaceship-prompt/spaceship-prompt
-# antigen theme agnoster/agnoster-zsh-theme
+# Only load themes in interactive shells to avoid interfering with agent shells
+if [[ -o interactive ]]; then
+  # antigen theme romkatv/powerlevel10k
+  # antigen theme spaceship-prompt/spaceship-prompt
+  antigen theme agnoster/agnoster-zsh-theme
+fi
+# Disable fancy prompts for Cursor Agent sessions
+if [[ -n "$CURSOR_AGENT" ]]; then
+  # Bare minimum prompt
+  unset ZSH_THEME
+  PS1='%~ $ '
+fi
+# if [[ -o interactive ]] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+
 
 antigen apply
