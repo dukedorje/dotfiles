@@ -1,7 +1,5 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# Only enable for interactive shells to avoid interfering with agent shells
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES
@@ -12,6 +10,10 @@ export EDITOR_CMD="/usr/local/bin/zed"
 export EDITOR="$EDITOR_CMD -w"
 export VISUAL="$EDITOR_CMD -w"
 export NVM_NO_USE=false
+
+export OTEL_LOGS_EXPORTER=none
+export OTEL_TRACES_EXPORTER=none
+export OTEL_METRICS_EXPORTER=none
 
 # Stash your environment variables in ~/.env. This means they'll stay out
 # of your main repository, but you'll have access to them in your scripts.
@@ -81,11 +83,13 @@ if [ -d "$HOME/.maestro" ]; then
 fi
 
 # Android development
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-# export JAVA_HOME=/opt/homebrew/opt/openjdk
-export JAVA_HOME=$(/usr/libexec/java_home)
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  export JAVA_HOME=$(/usr/libexec/java_home)
+  export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
+  export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+  export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+  export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/emulator
+fi
 
 if [ -d "$HOME/.config/broot/launcher/bash" ]; then
   source $HOME/.config/broot/launcher/bash/br
@@ -95,19 +99,10 @@ if (( $+commands[go] )) && [ -d "$(go env GOPATH)" ]; then
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
 export PATH=$HOME/.avm/bin:$PATH
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
-export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
-
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/emulator
 
 alias chromium="$HOME/Library/Caches/ms-playwright/chromium-1181/chrome-mac/Chromium.app"
 export PATH="$HOME/bin:$PATH"
 
 alias python="uv run python"
-alias bmad="node $HOME/work/Projects/AI/BMAD-METHOD/tools/cli/bmad-cli.js"
+alias bmad="node $HOME/work/Projects/AI/CodingAgentPrompts/BMAD-METHOD/tools/cli/bmad-cli.js"
 alias ik=/Users/dukejones/work/Identikey/tools/dist/index.js
