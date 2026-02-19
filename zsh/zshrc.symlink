@@ -53,10 +53,6 @@ unset config_files
 export KEYTIMEOUT=1
 
 
-export PNPM_HOME="$HOME/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH:${HOME}/.fluvio/bin:${HOME}/.foundry/bin:${HOME}/.local/bin"
-
-
 if (( $+commands[rbenv] )); then
   eval "$(rbenv init - zsh)"
 fi
@@ -67,22 +63,12 @@ fi
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 lfcd () {
     # `command` is needed in case `lfcd` is aliased to `lf`
     cd "$(command lf -print-last-dir "$@")"
 }
 bindkey -s '^o' 'lfcd\n' # Ctrl+o
-
-if [ -d "$HOME/.local/share/solana/install/active_release/bin" ]; then
-  export PATH="$PATH:$HOME/.local/share/solana/install/active_release/bin"
-fi
-
-if [ -d "$HOME/.maestro" ]; then
-  export PATH=$PATH:$HOME/.maestro/bin
-fi
 
 # Android development
 if [[ "$(uname -s)" == "Darwin" ]]; then
@@ -100,10 +86,7 @@ fi
 if (( $+commands[go] )) && [ -d "$(go env GOPATH)" ]; then
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
-export PATH=$HOME/.avm/bin:$PATH
-
 alias chromium="$HOME/Library/Caches/ms-playwright/chromium-1181/chrome-mac/Chromium.app"
-export PATH="$HOME/bin:$PATH"
 
 alias python="uv run python"
 alias bmad="node $HOME/work/Projects/AI/CodingAgentPrompts/BMAD-METHOD/tools/cli/bmad-cli.js"
