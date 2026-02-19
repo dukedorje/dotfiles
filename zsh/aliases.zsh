@@ -36,5 +36,5 @@ alias ytx="yt-dlp -x"
 alias ytxa="yt-dlp --audio-format aac --no-playlist -x"
 
 alias z="zellij"
-alias ccd="claude-code --dangerously-skip-permissions"
+alias ccd="claude --dangerously-skip-permissions"
 alias applypath="echo 'An AI Agent should run this internally, not on the command shell.'"
