@@ -1,9 +1,7 @@
-# TODO: Install nvm
+#!/usr/bin/env bash
+# Install mise (works on macOS and Ubuntu/Debian)
 
-if test ! $(which spoof)
-then
-  if test $(which npm)
-  then
-    sudo npm install spoof -g
-  fi
+if ! command -v mise &>/dev/null; then
+  echo "Installing mise..."
+  curl https://mise.run | sh
 fi

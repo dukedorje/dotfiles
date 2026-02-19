@@ -9,8 +9,6 @@ export HOMEBREW_NO_ENV_HINTS=1
 export EDITOR_CMD="/usr/local/bin/zed"
 export EDITOR="$EDITOR_CMD -w"
 export VISUAL="$EDITOR_CMD -w"
-export NVM_NO_USE=false
-
 export OTEL_LOGS_EXPORTER=none
 export OTEL_TRACES_EXPORTER=none
 export OTEL_METRICS_EXPORTER=none
@@ -61,6 +59,10 @@ export PATH="$PNPM_HOME:$PATH:${HOME}/.fluvio/bin:${HOME}/.foundry/bin:${HOME}/.
 
 if (( $+commands[rbenv] )); then
   eval "$(rbenv init - zsh)"
+fi
+
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
 fi
 
 # bun completions
