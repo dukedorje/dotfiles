@@ -12,24 +12,15 @@ alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/C
 alias ll="ls -l"
 #alias rnd='open "rndebugger://set-debugger-loc?host=localhost&port=19001"'
 alias g=git
-alias be="bundle exec"
-alias bi="bundle install"
-# alias ss="spring stop"
 alias gpr="git pull -r"
-alias s="bin/rails s"
-alias co="bin/rails c"
-alias r="bin/rails"
-alias ra="bin/rake"
-alias dbm="bin/rails db:migrate"
-alias rs="bin/rspec"
+alias dbm="bun run db:migrate"
 alias nr="npm run"
 alias tf="terraform"
 alias y=yarn
-alias hh="pnpm hardhat"
 alias p=pnpm
 alias px=pnpx
-alias br="bun run"
-alias b="bun"
+alias b="bun run"
+alias bx="bun x"
 alias c="cargo"
 
 alias ytx="yt-dlp -x"
@@ -37,4 +28,3 @@ alias ytxa="yt-dlp --audio-format aac --no-playlist -x"
 
 alias z="zellij"
 alias ccd="claude --dangerously-skip-permissions"
-alias applypath="echo 'An AI Agent should run this internally, not on the command shell.'"

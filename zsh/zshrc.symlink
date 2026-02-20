@@ -79,10 +79,6 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/emulator
 fi
 
-if [ -d "$HOME/.config/broot/launcher/bash" ]; then
-  source $HOME/.config/broot/launcher/bash/br
-fi
-
 if (( $+commands[go] )) && [ -d "$(go env GOPATH)" ]; then
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
